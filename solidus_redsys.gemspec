@@ -1,9 +1,9 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_redsys'
+  s.name        = 'solidus_redsys'
   s.version     =  '2.4.0'
-  s.summary     = 'Adds Sermepa TPV as a Payment Method to Spree store'
+  s.summary     = 'Adds Sermepa TPV as a Payment Method to Solidus store'
   s.description = 'Redsys is a spanish payment gateway. Servired Network'
   s.author    = 'Héctor Picazo'
   s.email     = 'hector@2bedigital.com'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '>= 2.4.0'
+  s.add_dependency 'solidus_core', '>= 1.3'
   s.add_development_dependency 'capybara', '2.4.4'
   s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'ffaker'

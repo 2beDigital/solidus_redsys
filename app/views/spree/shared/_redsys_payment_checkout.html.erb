@@ -1,9 +1,7 @@
 <%
    require 'active_merchant/billing/integrations/action_view_helper'
    ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper)
-
-   if @payment_method.kind_of?(Spree::BillingIntegration::RedsysPayment) &&
-           ( @payment_method.environment.to_s.include?('development') || @payment_method.preferred_test_mode )
+   if @payment_method.kind_of?(Spree::BillingIntegration::RedsysPayment) && @payment_method.preferred_test_mode
         ActiveMerchant::Billing::Base.integration_mode = :test
    end
 %>
@@ -27,8 +25,7 @@
    notify_url_redsys = redsys_notify_order_redsys_callbacks_url(@order, :payment_method_id => @payment_method, :protocol => 'http')
    notify_url_redsys = (@payment_method.preferred_notify_alternative_domain_url + redsys_notify_order_redsys_callbacks_path(@order, :payment_method_id => @payment_method)) if @payment_method.preferred_notify_alternative_domain_url.present?
 %>
-
-<%= payment_service_for order_number, Spree::Config[:site_name],
+<%= payment_service_for order_number, Spree::Store.current.name,
                         :amount => (@payment_method.amount_in_cents(@order.total)),
                         :currency => @payment_method.preferred_currency,
                         :description => items.to_s[0..120].gsub(/({|")/,'').gsub(/}/,"\n").gsub("=>",": ").gsub("[","(").gsub("]",")"),

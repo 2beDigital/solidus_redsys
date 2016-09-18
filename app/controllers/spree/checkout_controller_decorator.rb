@@ -10,7 +10,7 @@ module Spree
       return unless (params[:state] == "payment")
       return unless params[:order][:payments_attributes]
 
-      load_order_with_lock
+      load_order
       @order.update_from_params(params, permitted_checkout_attributes, request.headers.env)
       @payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
 

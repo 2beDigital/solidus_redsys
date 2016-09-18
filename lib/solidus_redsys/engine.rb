@@ -1,8 +1,8 @@
-module SpreeRedsys
+module SolidusRedsys
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_redsys'
+    engine_name 'solidus_redsys'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
@@ -20,9 +20,7 @@ module SpreeRedsys
     config.to_prepare &method(:activate).to_proc
 
     initializer "spree_redsys.register.payment_methods", :after => 'spree.register.payment_methods' do |app|
-      app.config.spree.payment_methods += [
-          Spree::BillingIntegration::RedsysPayment
-      ]
+      app.config.spree.payment_methods << Spree::BillingIntegration::RedsysPayment
     end
 
   end
