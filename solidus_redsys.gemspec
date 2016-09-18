@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_redsys'
-  s.version     =  '2.4.0'
+  s.version     =  '1.0.0'
   s.summary     = 'Adds Sermepa TPV as a Payment Method to Solidus store'
   s.description = 'Redsys is a spanish payment gateway. Servired Network'
   s.author    = 'Héctor Picazo'
