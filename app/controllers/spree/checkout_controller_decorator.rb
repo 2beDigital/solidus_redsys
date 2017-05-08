@@ -11,7 +11,8 @@ module Spree
       return unless params[:order][:payments_attributes]
 
       load_order
-      @order.update_from_params(params, permitted_checkout_attributes, request.headers.env)
+			OrderUpdateAttributes.new(@order, update_params, request_env: request.headers.env).apply
+      #@order.update_from_params(params, permitted_checkout_attributes, request.headers.env)
       @payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
 
       return unless @payment_method.kind_of?(Spree::BillingIntegration::RedsysPayment)
