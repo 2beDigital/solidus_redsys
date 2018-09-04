@@ -65,7 +65,9 @@
 =end
     end
 
-    def cancel(response); end
+    def cancel(*)
+      '0666'
+    end
 
     def void(*args)
       ActiveMerchant::Billing::Response.new(true, "", {}, {})
