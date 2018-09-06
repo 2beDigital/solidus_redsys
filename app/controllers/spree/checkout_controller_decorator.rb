@@ -2,7 +2,7 @@ module Spree
   Spree::CheckoutController.class_eval do
     #autoload :Helper, 'active_merchant/billing/integrations/redsys/helper.rb'
 
-    before_filter :redirect_to_redsys_form_if_needed, :only => [:update]
+    before_action :redirect_to_redsys_form_if_needed, :only => [:update]
 
     protected
 
