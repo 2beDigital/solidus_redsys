@@ -66,7 +66,7 @@
     end
 
     def cancel(*)
-      '0666'
+       ActiveMerchant::Billing::Response.new(true, '666: you must refund manually from tpv admin', {}, {})
     end
 
     def void(*args)
