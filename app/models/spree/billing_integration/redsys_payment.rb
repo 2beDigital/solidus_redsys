@@ -73,6 +73,10 @@
       ActiveMerchant::Billing::Response.new(true, "", {}, {})
     end
 
+    def credit(amount_in_cents, auth_code, gateway_options = {})
+      ActiveMerchant::Billing::Response.new(true, "You must refund manually from tpv admin", {}, {})
+    end
+
     def find_authorization(payment)
       logs = payment.log_entries.all(:order => 'created_at DESC')
       logs.each do |log|
