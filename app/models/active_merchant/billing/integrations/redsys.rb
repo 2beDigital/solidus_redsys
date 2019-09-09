@@ -104,7 +104,7 @@ module ActiveMerchant #:nodoc:
         end
 
         def supported_currencies
-          [ ['EUR', '978'] ]
+          [ ['EUR', '978'], ['CHF', '756'], ['USD', '840'] ]
         end
 
         def supported_languages
